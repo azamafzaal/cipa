@@ -419,9 +419,10 @@ class Cipa implements CipaBeanContainer, Runnable, Serializable {
 
 					// Will be invoked after all activities for each node
 					List<NodeCleanup> cleanupResources = findBeansAsList(NodeCleanup.class)
-					cleanupResources.forEach({ cleanResource ->
-						cleanResource.cleanupNode(node)
-					})
+					script.echo("The size of clean up resources is ${cleanupResources.size()}")
+					for (NodeCleanup cleanupResource in cleanupResources){
+						cleanupResource.cleanupNode(node)
+					}
 				}
 			}
 		}
